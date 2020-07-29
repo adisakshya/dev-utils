@@ -1,0 +1,27 @@
+
+version: "3.7"
+
+services:
+
+  flask_application:
+    build:
+      context: ./app
+    restart: always
+    links:
+      - redis
+  
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - '80:80'
+    depends_on: 
+      - flask_application
+    
+  redis:
+    image: redis
+    container_name: redisCache
+    ports:
+      - '6379:6379'

@@ -1,0 +1,24 @@
+version: '3.7'
+ 
+services:
+    reverseproxy:
+        build: ./reverseproxy
+        ports:
+            - '8080:8080'
+        restart: always
+    
+    application_a:
+        depends_on: 
+            - reverseproxy
+        build: ./api_A
+        environment: 
+            PYTHONPATH: .
+        restart: always
+    
+    application_b:
+        depends_on: 
+            - reverseproxy
+        build: ./api_B
+        environment: 
+            PYTHONPATH: .
+        restart: always
