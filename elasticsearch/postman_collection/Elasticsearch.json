@@ -1,0 +1,935 @@
+{
+	"info": {
+		"_postman_id": "229c719d-5c58-473d-bd5e-95df52a61d30",
+		"name": "Elasticsearch",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Document API",
+			"item": [
+				{
+					"name": "Get all documents in an index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/_search",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"_search"
+							]
+						},
+						"description": "To get all documents in an index, send a GET request."
+					},
+					"response": []
+				},
+				{
+					"name": "Get document for the index by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/mydocument/1234",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"mydocument",
+								"1234"
+							]
+						},
+						"description": "To get document of an index by ID, send a GET request."
+					},
+					"response": []
+				},
+				{
+					"name": "Get all fields of document for the index by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/mydocument/1234?_source",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"mydocument",
+								"1234"
+							],
+							"query": [
+								{
+									"key": "_source",
+									"value": null
+								}
+							]
+						},
+						"description": "To get all fields of a document for an index by ID, send a GET request."
+					},
+					"response": []
+				},
+				{
+					"name": "Get custom fields of document for the index by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/mydocument/1234?_source_includes=author,name,year",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"mydocument",
+								"1234"
+							],
+							"query": [
+								{
+									"key": "_source_includes",
+									"value": "author,name,year"
+								}
+							]
+						},
+						"description": "To get custom fields of a document for an index by ID, send a GET request."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a document for the index",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"document1\",\n\t\"author\": \"adisakshya chauhan\",\n\t\"month\": \"March\",\n\t\"year\": \"2020\",\n\t\"score\": \"100\",\n\t\"contact\": \"adisakshya98@gmail.com\",\n\t\"location\": [28.5733056, 77.0122136]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/mydocument",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"mydocument"
+							]
+						},
+						"description": "To create a new document for an index, send a POST request.\n\nThe documents are given some IDs which are used in identifying the document."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a document for the index (custom ID)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"document2\",\n\t\"author\": \"adisakshya chauhan\",\n\t\"month\": \"March\",\n\t\"year\": \"2020\",\n\t\"score\": \"95\",\n\t\"contact\": \"adisakshya@outlook.com\",\n\t\"location\": [30.5733056, 80.0122136]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/mydocument/1234",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"mydocument",
+								"1234"
+							]
+						},
+						"description": "To create a new document for an index by ID, send a POST request.\n\nThe documents are given some IDs which are used in identifying the document."
+					},
+					"response": []
+				},
+				{
+					"name": "Update a document for the index",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"document1\",\n\t\"author\": \"adisakshya chauhan\",\n\t\"month\": \"March\",\n\t\"year\": \"2020\",\n\t\"score\": \"99\",\n\t\"contact\": \"adisakshya98@gmail.com\",\n\t\"country\": \"India\",\n\t\"location\": [28.5733056, 77.0122136]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/mydocument",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"mydocument"
+							]
+						},
+						"description": "To update a document for an index, send a POST request."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a document for the index",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/mydocument/UEIu-HABGnObPCBXLmDu",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"mydocument",
+								"UEIu-HABGnObPCBXLmDu"
+							]
+						},
+						"description": "To delete a document for an index, send a DELETE request."
+					},
+					"response": []
+				},
+				{
+					"name": "Versoning a document for the index",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"document1\",\n\t\"author\": \"adisakshya chauhan\",\n\t\"month\": \"March\",\n\t\"year\": \"2020\",\n\t\"score\": \"100\",\n\t\"contact\": \"adisakshya98@gmail.com\",\n\t\"location\": [28.5733056, 77.0122136]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/mydocument/1?version=2&version_type=external",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"mydocument",
+								"1"
+							],
+							"query": [
+								{
+									"key": "version",
+									"value": "2"
+								},
+								{
+									"key": "version_type",
+									"value": "external"
+								}
+							]
+						},
+						"description": "To set version for a new document for an index, send a POST request."
+					},
+					"response": []
+				},
+				{
+					"name": "Update a document for the index",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"document1\",\n\t\"author\": \"adisakshya chauhan\",\n\t\"month\": \"March\",\n\t\"year\": \"2020\",\n\t\"score\": \"100\",\n\t\"country\": \"India\",\n\t\"contact\": \"adisakshya98@gmail.com\",\n\t\"location\": [28.5733056, 77.0122136]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/mydocument/1",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"mydocument",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Force create document for an index",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"document1\",\n\t\"author\": \"adisakshya chauhan\",\n\t\"month\": \"March\",\n\t\"year\": \"2020\",\n\t\"score\": \"100\",\n\t\"country\": \"India\",\n\t\"contact\": \"adisakshya98@gmail.com\",\n\t\"location\": [28.5733056, 77.0122136]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/mydocument/1234?op_type=create",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"mydocument",
+								"1234"
+							],
+							"query": [
+								{
+									"key": "op_type",
+									"value": "create"
+								}
+							]
+						},
+						"description": "To force create document for an index, send a POST request."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Search API",
+			"item": [
+				{
+					"name": "Multi-Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/_all/_search?q=country:India",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"_all",
+								"_search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "country:India"
+								}
+							]
+						},
+						"description": "Search all documents with query"
+					},
+					"response": []
+				},
+				{
+					"name": "Request Body Search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\": {\n\t\t\"match\": {\n\t\t\t\"country\": \"India\"\n\t\t}\n\t}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/_search",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"_search"
+							]
+						},
+						"description": "Search all documents with query to match country name"
+					},
+					"response": []
+				},
+				{
+					"name": "Multi Match",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\": {\n\t\t\"multi_match\": {\n\t\t\t\"query\": \"India\"\n\t\t}\n\t}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/_search",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"_search"
+							]
+						},
+						"description": "Search all documents with query to contain a word.\nLook for documents containing word \"India\"."
+					},
+					"response": []
+				},
+				{
+					"name": "Multi Match query on field",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\": {\n\t\t\"multi_match\": {\n\t\t\t\"query\": \"India\",\n\t\t\t\"fields\": [\"country\"]\n\t\t}\n\t}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/_search",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"_search"
+							]
+						},
+						"description": "Search all documents with query to contain a word in a field\n\nLook for documents containing word \"adisakshya\" in author field."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Index API",
+			"item": [
+				{
+					"name": "Get all indices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/_all",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"_all"
+							]
+						},
+						"description": "To get all indices, send a GET request."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Index",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "192.168.99.101:9200/myindex",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex"
+							]
+						},
+						"description": "To create an index, send a PUT request with \n1. Settings\n2. Mappings\n3. Aliases\nor just a simple request without body."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an index",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex"
+							]
+						},
+						"description": "To delete an index, send a DELETE request."
+					},
+					"response": []
+				},
+				{
+					"name": "Index Exist",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex"
+							]
+						},
+						"description": "Existence of an index can be determined by sending a GET request to that index. \nIf the HTTP response is 200, it exists; if it is 404, it does not exist."
+					},
+					"response": []
+				},
+				{
+					"name": "Get index settings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/_settings",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"_settings"
+							]
+						},
+						"description": "To get settings of an index, send a GET request."
+					},
+					"response": []
+				},
+				{
+					"name": "Get index stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/_stats",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"_stats"
+							]
+						},
+						"description": "To get stats of an index, send a GET request."
+					},
+					"response": []
+				},
+				{
+					"name": "Flush on index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/myindex/_flush",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"myindex",
+								"_flush"
+							]
+						},
+						"description": "The flush process of an index makes sure that any data that is currently only persisted in the transaction log is also permanently persisted in Lucene."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CAT API",
+			"item": [
+				{
+					"name": "Get all indices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/_cat/indices",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"indices"
+							]
+						},
+						"description": "This request gives all the indices"
+					},
+					"response": []
+				},
+				{
+					"name": "Verbose",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/_cat/indices?v",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"indices"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": null
+								}
+							]
+						},
+						"description": "The verbose output gives a nice display of results of a cat command."
+					},
+					"response": []
+				},
+				{
+					"name": "Headers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/_cat/nodes",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"nodes"
+							]
+						},
+						"description": "The h parameter, also called header, can be used to display only those columns mentioned in the command."
+					},
+					"response": []
+				},
+				{
+					"name": "Count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.99.101:9200/_cat/count?v",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"count"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": null
+								}
+							]
+						},
+						"description": "Provides the count of total number of documents in the entire cluster."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Cluster API",
+			"item": [
+				{
+					"name": "Node",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "192.168.99.101:9200/_nodes",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"_nodes"
+							]
+						},
+						"description": "Getting information about cluster and its nodes"
+					},
+					"response": []
+				},
+				{
+					"name": "Cluster Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "192.168.99.101:9200/_cluster/health",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"_cluster",
+								"health"
+							]
+						},
+						"description": "Get the status on the health of the cluster"
+					},
+					"response": []
+				},
+				{
+					"name": "Cluster Stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "192.168.99.101:9200/_cluster/stats",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"_cluster",
+								"stats"
+							]
+						},
+						"description": "Retrieve statistics about cluster"
+					},
+					"response": []
+				},
+				{
+					"name": "Node Stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "192.168.99.101:9200/_nodes/stats",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"_nodes",
+								"stats"
+							]
+						},
+						"description": "Retrieve the statistics of one more nodes of the cluster"
+					},
+					"response": []
+				},
+				{
+					"name": "Node hot_threads",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "192.168.99.101:9200/_nodes/hot_threads",
+							"host": [
+								"192",
+								"168",
+								"99",
+								"101"
+							],
+							"port": "9200",
+							"path": [
+								"_nodes",
+								"hot_threads"
+							]
+						},
+						"description": " Retrieve information about the current hot threads on each node in cluster."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Check if the server is up and running",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "192.168.99.101:9200",
+					"host": [
+						"192",
+						"168",
+						"99",
+						"101"
+					],
+					"port": "9200"
+				},
+				"description": "check if the server is up and running by browsing http://<domain>:9200, It will return a JSON object, which contains the information about the installed Elasticsearch."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
