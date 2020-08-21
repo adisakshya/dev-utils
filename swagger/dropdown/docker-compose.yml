@@ -1,0 +1,12 @@
+version: '3'
+services:
+    swagger-ui:
+        ports:
+          - 8080:8080
+        image: swaggerapi/swagger-ui
+        restart: always
+        volumes:
+          - //projects/dev-utils/swagger/specs://usr/share/nginx/html/docs
+        environment:
+            VALIDATOR_URL: ''
+            SWAGGER_JSON: specs/swagger.json
