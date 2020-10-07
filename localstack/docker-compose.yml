@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  localstack-container:
+    privileged: true
+    image: localstack/localstack-full
+    ports:
+      - "4566-4599:4566-4599"
+      - "8081:8081"
+      - "8080:8080"
+    environment:
+      - SERVICES=sqs,sns,s3
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - DEFAULT_REGION=us-east-1
+      - START_WEB=1
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./.localstack:/tmp/localstack"
