@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  cachet:
+    image: cachethq/docker
+    ports:
+      - 8000:8000
+    environment:
+      - DB_DRIVER=pgsql
+      - DB_HOST=192.168.99.100
+      - DB_PORT=5431
+      - DB_DATABASE=cachet
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - APP_KEY=${APP_KEY:-null}
+      - APP_LOG=errorlog
+      - APP_ENV=${APP_ENV:-production}
+      - APP_DEBUG=false
+      - DEBUG=false
+    restart: on-failure
