@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+
+  # PostgreGIS Database
+  postgis:
+    container_name: postgis
+    image: mdillon/postgis:9.5-alpine
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-root}
+      PGDATA: /data/postgis
+    volumes:
+       - postgis:/data/postgis
+    ports:
+      - "5432:5432"
+    networks:
+      - postgis
+    restart: always
+  
+  # PG Admin
+  pgadmin:
+   container_name: pgadmin
+   image: dpage/pgadmin4:latest
+   environment:
+     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-adisakshya98@gmail.com}
+     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+   volumes:
+      - pgadmin:/root/.pgadmin
+   ports:
+     - "${PGADMIN_PORT:-5040}:80"
+   networks:
+     - postgis
+   restart: always
+
+networks:
+  postgis:
+    driver: bridge
+
+volumes:
+    postgis:
+    pgadmin:
+
+# docker run --name some-postgis -e POSTGRES_PASSWORD=mysecretpassword -d mdillon/postgis
