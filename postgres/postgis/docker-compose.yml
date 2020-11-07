@@ -39,5 +39,3 @@ networks:
 volumes:
     postgis:
     pgadmin:
-
-# docker run --name some-postgis -e POSTGRES_PASSWORD=mysecretpassword -d mdillon/postgis
