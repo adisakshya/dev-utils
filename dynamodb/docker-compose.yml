@@ -8,3 +8,9 @@ services:
     container_name: dynamodb-local
     ports:
       - "8000:8000"
+
+  # DynamoDB Admin
+  dynamodb-admin:
+    build: ./dynamodb-admin
+    ports:
+      - "8001:8001"
