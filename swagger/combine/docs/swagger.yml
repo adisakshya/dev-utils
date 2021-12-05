@@ -1,0 +1,26 @@
+openapi: '3.0.0'
+info:
+  title: Savd APIs Documentation
+  version: 1.0.0
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - bearerAuth: []
+servers:
+  - url: https://api.savd.app/v1
+    description: Production server
+  - url: https://api.savd.dev/v1
+    description: Development server
+parameters:
+  x-transaction-id:
+    name: X-Transaction-ID
+    in: header
+    description: Transaction correlation identifier.
+    required: true
+    type: string
+apis:
+  - url: 'http://bookmarking.savd.local:80/docs-json'
+  

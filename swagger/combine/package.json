@@ -1,0 +1,21 @@
+{
+  "name": "swagger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "node lib/clean.js",
+    "combine": "node combine.js && npm run clean",
+    "dev": "npm run combine && node app.js",
+    "start:prod": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "swagger-combine": "^1.2.0",
+    "swagger-ui-express": "^4.1.4"
+  }
+}
